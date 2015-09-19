@@ -1,4 +1,3 @@
-var assert = require("assert");
 var expect = require("chai").expect;
 var hello = require("../src/hello.js");
 
