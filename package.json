@@ -1,0 +1,23 @@
+{
+  "name": "battleship",
+  "version": "0.0.0",
+  "description": "An excersize in basic node.js fun",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackerHappyHour/battleship.git"
+  },
+  "keywords": [
+    "battleship",
+    "node"
+  ],
+  "author": "Brian Vanderbusch <brian@normalgravity.com> (https://github.com/LongLiveCHIEF)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HackerHappyHour/battleship/issues"
+  },
+  "homepage": "https://github.com/HackerHappyHour/battleship#readme"
+}
