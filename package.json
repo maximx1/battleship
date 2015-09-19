@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/HackerHappyHour/battleship/issues"
   },
-  "homepage": "https://github.com/HackerHappyHour/battleship#readme"
+  "homepage": "https://github.com/HackerHappyHour/battleship#readme",
+  "devDependencies": {
+    "mocha": "^2.3.2"
+  }
 }
