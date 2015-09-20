@@ -1,7 +1,7 @@
 var commandhistory = function() {};
 
-commandhistory.addCommand = function(command) {
-
+commandhistory.prototype.addCommand = function(command) {
+	this.isPlayerOnesTurn = true;
 };
 
 module.exports = commandhistory;

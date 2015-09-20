@@ -4,7 +4,7 @@
   "description": "An excersize in basic node.js fun",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --recursive ./test"
+    "test": "mocha ./test"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,8 @@
   "homepage": "https://github.com/HackerHappyHour/battleship#readme",
   "dependencies": {
     "websocket":"^1.0.21",
-    "node-uuid":"^1.4.3"
+    "node-uuid":"^1.4.3",
+    "tuple-w": "^1.1.1"
   },
   "devDependencies": {
     "mocha": "^2.3.2",

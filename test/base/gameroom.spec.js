@@ -1,5 +1,4 @@
 var gameroom = require("../../src/base/gameroom.js");
-var expect = require("chai").expect;
 
 describe("Gameroom", function() {
 	describe("object", function() {
