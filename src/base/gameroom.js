@@ -1,4 +1,5 @@
 var uuid = require("node-uuid");
+var CommandHistory = require("./commandhistory.js");
 
 var gameroom = function(initTimestamp, endTimestamp, player1, player2, passphrase) {
 	this.id = uuid.v4();
@@ -7,6 +8,15 @@ var gameroom = function(initTimestamp, endTimestamp, player1, player2, passphras
 	this.player1 = player1;
 	this.player2 = player2;
 	this.passphrase = passphrase;
+	this.commandHistory = new CommandHistory();
 }
+
+gameroom.gameLength = function() {
+	return this.endTimestamp - this.initTimeStamp;
+};
+
+gameroom.commitNewCommand = function(command) {
+	return this.commandHistory.addCommand(command);
+};
 
 module.exports = gameroom;
