@@ -8,7 +8,7 @@ var player = function(id, name) {
 	this.hitAttempts = utils.init2DArray(10, false);
 };
 
-player.prototype.recieveAttemptedHit = function(coord) {
+player.prototype.determineHit = function(coord) {
 	var _board = this.board;
 	return coord.unpack(function(x, y) {
 		if(x < 0 || x > _board.length || y < 0 || y > _board.length) {
@@ -46,7 +46,6 @@ player.prototype.determineOpponentView = function(opponentAttempts) {
 };
 
 /*
-
 opponentAttempt, board
 true, true = true -> opponentAttempt landed, vessel present
 true, false = null -> opponentAttempt missed, no vessel present
@@ -55,7 +54,6 @@ false, false = null -> opponentAttempt not made, no vessel present
 true = red
 false = black
 null = white
-
 hitAttempt, opponent's board
 true, true = true -> torpedo landed, vessel present
 true, false = false -> torpedo missed, vessel wasn't present
@@ -64,7 +62,6 @@ false, false = null -> no torpedo sent, no vessel present
 true = green
 false = red
 null = white
-
 */
 
 
