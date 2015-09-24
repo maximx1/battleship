@@ -30,8 +30,6 @@ gameroom.prototype.commitNewCommand = function(command) {
 		this.bumpTurn();
 	}
 	return result;
-
-	//return this.commandHistory.addCommand(command, initiatingPlayer, affectedPlayer);
 };
 
 gameroom.prototype.determineAffectedPlayer = function(isTargetSelf) {

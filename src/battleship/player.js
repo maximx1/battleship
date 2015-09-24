@@ -1,4 +1,5 @@
-var utils = require("../../src/utils/utils.js");
+var utils = require("../utils/utils.js");
+var GameLogic = require("./gameLogic.js");
 var Tuple = require("tuple-w");
 
 var player = function(id, name) {
@@ -20,49 +21,7 @@ player.prototype.determineHit = function(coord) {
 };
 
 player.prototype.determineSelfBoardView = function(opponentAttempts) {
-	return this.board.map(function(x, i) {
-		return x.map(function(y, j) {
-			if(opponentAttempts[i][j]) {
-				return y ? true : null;
-			}
-			else {
-				return y ? false : null;
-			}
-		});
-	});
+	return GameLogic.determinePlayersBoardView(this.board, opponentAttempts);
 };
-
-player.prototype.determineOpponentView = function(opponentAttempts) {
-	return this.board.map(function(x, i) {
-		return x.map(function(y, j) {
-			if(opponentAttempts[i][j]) {
-				return y ? true : false;
-			}
-			else {
-				return null;
-			}
-		});
-	});
-};
-
-/*
-opponentAttempt, board
-true, true = true -> opponentAttempt landed, vessel present
-true, false = null -> opponentAttempt missed, no vessel present
-false, true = false -> opponentAttempt not made, vessel present
-false, false = null -> opponentAttempt not made, no vessel present
-true = red
-false = black
-null = white
-hitAttempt, opponent's board
-true, true = true -> torpedo landed, vessel present
-true, false = false -> torpedo missed, vessel wasn't present
-false, true = null -> no torpedo sent, vessel present
-false, false = null -> no torpedo sent, no vessel present
-true = green
-false = red
-null = white
-*/
-
 
 module.exports = player;
