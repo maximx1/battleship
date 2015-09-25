@@ -2,6 +2,7 @@ var uuid = require("node-uuid");
 var Tuple = require("tuple-w");
 var GameLogic = require("./gameLogic.js");
 var ResponsePayload = require("./models/responsePayload.js");
+var utils = require("../utils/utils.js");
 
 var gameroom = function(initTimestamp, endTimestamp, player1, player2, passphrase) {
 	this.id = uuid.v4();
@@ -24,7 +25,7 @@ gameroom.prototype.commitNewCommand = function(command) {
 	var affectedPlayer = this.determineAffectedPlayer(command.targetSelf);
 	this.commandHistory.push(command);
 
-	var result = affectedPlayer.determineHit(command.coord);
+	var result = utils.getArrayElementByCoord(affectedPlayer.board, command.coord);
 	if(result !== null) {
 		command.coord.unpack(function(x, y) {
 			initiatingPlayer.hitAttempts[x][y] = true;

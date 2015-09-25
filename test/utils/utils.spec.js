@@ -1,4 +1,5 @@
 var utils = require("../../src/utils/utils.js");
+var Tuple = require("tuple-w");
 
 describe("utils", function() {
 	describe("#range()", function() {
@@ -20,6 +21,26 @@ describe("utils", function() {
 			expect(array2).to.deep.equal([[false, false, false, false], [false, false, false, false], [false, false, false, false], [false, false, false, false]]);
 			expect(array3).to.deep.equal([["snicklefritz", "snicklefritz", "snicklefritz"], ["snicklefritz", "snicklefritz", "snicklefritz"], ["snicklefritz", "snicklefritz", "snicklefritz"]]);
 			expect(array4).to.deep.equal([[101]]);
+		});
+	});
+
+	describe("#getArrayElementByCoord()", function() {
+		it("should return the element of the array found at the passed in coordinates", function() {
+			var arr = utils.init2DArray(10, false);
+			arr[1][4] = true;
+			expect(utils.getArrayElementByCoord(arr, new Tuple(1, 4))).to.equal(true);
+		});
+
+		it("should return null should the coordinates be out of bounds", function() {
+			expect(utils.getArrayElementByCoord(utils.init2DArray(10, false), new Tuple(-1, -1))).to.equal(null);
+		});
+
+		it("should return null should the passed in array be null", function() {
+			expect(utils.getArrayElementByCoord(null, new Tuple(-1, -1))).to.equal(null);
+		});
+
+		it("should return null should the coordinates be null", function() {
+			expect(utils.getArrayElementByCoord(utils.init2DArray(10, false), null)).to.equal(null);
 		});
 	});
 });
