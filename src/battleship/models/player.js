@@ -1,5 +1,4 @@
-var utils = require("../utils/utils.js");
-var GameLogic = require("./gameLogic.js");
+var utils = require("../../utils/utils.js");
 var Tuple = require("tuple-w");
 
 var player = function(id, name) {
@@ -18,10 +17,6 @@ player.prototype.determineHit = function(coord) {
 
 		return _board[x][y];
 	});
-};
-
-player.prototype.determineSelfBoardView = function(opponentAttempts) {
-	return GameLogic.determinePlayersBoardView(this.board, opponentAttempts);
 };
 
 module.exports = player;

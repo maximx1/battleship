@@ -1,4 +1,4 @@
-var Player = require("../../src/battleship/player.js");
+var Player = require("../../src/battleship/models/player.js");
 var Tuple = require("tuple-w");
 
 describe("Player", function() {

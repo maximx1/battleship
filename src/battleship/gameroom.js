@@ -1,5 +1,7 @@
 var uuid = require("node-uuid");
-var CommandHistory = require("./commandhistory.js");
+var Tuple = require("tuple-w");
+var GameLogic = require("./gameLogic.js");
+var ResponsePayload = require("./models/responsePayload.js");
 
 var gameroom = function(initTimestamp, endTimestamp, player1, player2, passphrase) {
 	this.id = uuid.v4();
@@ -30,6 +32,17 @@ gameroom.prototype.commitNewCommand = function(command) {
 		this.bumpTurn();
 	}
 	return result;
+};
+
+gameroom.prototype.retrieveGameState = function() {
+	var player1View = new ResponsePayload(
+		gameLogic.determinePlayersBoardView(this.player1.board, this.player2.hitAttempts),
+		gameLogic.determineHitView(this.player2.board, this.player1.hitAttempts)
+	);
+	var player2View = new responsePayload(
+		gameLogic.determinePlayersBoardView(this.player2.board, this.player1.hitAttempts),
+		gameLogic.determineHitView(this.player1.board, this.player2.hitAttempts)
+	);
 };
 
 gameroom.prototype.determineAffectedPlayer = function(isTargetSelf) {

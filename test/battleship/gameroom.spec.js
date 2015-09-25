@@ -1,6 +1,6 @@
-var Gameroom = require("../../src/base/gameroom.js");
-var Player = require("../../src/battleship/player.js");
-var Command = require("../../src/battleship/command.js");
+var Gameroom = require("../../src/battleship/gameroom.js");
+var Player = require("../../src/battleship/models/player.js");
+var Command = require("../../src/battleship/models/command.js");
 var Tuple = require("tuple-w");
 
 describe("Gameroom", function() {
