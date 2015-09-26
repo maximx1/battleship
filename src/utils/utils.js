@@ -1,3 +1,5 @@
+var crypto = require("crypto");
+
 var utils = {};
 
 utils.init2DArray = function(dimension, initValue) {
@@ -17,6 +19,13 @@ utils.getArrayElementByCoord = function(arr, coord) {
 		}
 		return arr[x][y];
 	});
+};
+
+utils.generateRandomString = function(n) {
+	if(n < 0) {
+		return "";
+	}
+	return crypto.randomBytes(n).toString('hex').substr(0, n);
 };
 
 module.exports = utils;

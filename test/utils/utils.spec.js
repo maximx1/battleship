@@ -43,4 +43,21 @@ describe("utils", function() {
 			expect(utils.getArrayElementByCoord(utils.init2DArray(10, false), null)).to.equal(null);
 		});
 	});
+
+	describe("#generateRandomString()", function() {
+		it("should return empty string when passed negative numbers", function() {
+			expect(utils.generateRandomString(-22)).to.equal("");
+		});
+
+		it("should return empty string when passed in a value of 0", function() {
+			expect(utils.generateRandomString(0)).to.equal("");
+		});
+
+		it("should return a string the length of what is passed in", function() {
+			expect(utils.generateRandomString(22).length).to.equal(22);
+			expect(utils.generateRandomString(100).length).to.equal(100);
+			expect(utils.generateRandomString(1).length).to.equal(1);
+			expect(utils.generateRandomString(444).length).to.equal(444);
+		});
+	});
 });

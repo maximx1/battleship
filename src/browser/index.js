@@ -1,32 +1,40 @@
 var Tuple = require("tuple-w");
-var Command = require("../battleship/models/command.js");
 var angular = require("angular");
+var utils = require("../utils/utils.js");
 require("angular-ui-router");
+
+var Command = require("../battleship/models/command.js");
 
 var battleshipGame = angular.module('battleshipGame', ['ui.router']);
 
 battleshipGame.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
-  //$urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('landing', {
       url: "/",
-      templateUrl: "partials/landing.html",
-      controller: "bsLandingControl"
+      templateUrl: "partials/landing.html"
     })
     .state('initiate_game', {
-      url: "game",
+      url: "/create",
       templateUrl: "partials/initiate_game.html",
-      controller: "bsGameControl"
+      controller: "bsInitiateControl"
+    })
+    .state('join_game', {
+      url: "/join",
+      templateUrl: "partials/join_game.html",
+      controller: "bsJoinControl"
     });
 }]);
 
-battleshipGame.controller('bsLandingControl', ["$scope", function ($scope) {
-  $scope.phones = [{name: "moto x", style: "touch screen"}, {name: "v-basic", style: "clamshell"}];
-  $scope.message = "Hello, World!";
+battleshipGame.controller('headerController', ["$scope", "$rootScope", function ($scope, $rootScope) {
+  $rootScope.username = "player_" + utils.generateRandomString(5);
 }]);
 
-battleshipGame.controller('bsGameControl', ["$scope", function ($scope) {
-  $scope.phones = [{name: "moto x", style: "touch screen"}, {name: "v-basic", style: "clamshell"}];
-  $scope.message = "----------------------------------------------------------------------------";
+battleshipGame.controller('bsInitiateControl', ["$scope", "$rootScope", function ($scope, $rootScope) {
+  $rootScope.username = "player_init";
+}]);
+
+battleshipGame.controller('bsJoinControl', ["$scope", "$rootScope", function ($scope, $rootScope) {
+  $rootScope.username = "player_join";
 }]);
