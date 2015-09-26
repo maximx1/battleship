@@ -2,6 +2,7 @@ var Gameroom = require("../../src/battleship/gameroom.js");
 var Player = require("../../src/battleship/models/player.js");
 var Command = require("../../src/battleship/models/command.js");
 var Tuple = require("tuple-w");
+var ResponsePayload = require("../../src/battleship/models/responsePayload.js");
 
 describe("Gameroom", function() {
 	describe("object", function() {
@@ -147,6 +148,28 @@ describe("Gameroom", function() {
 			gameroom.commitNewCommand(command);
 
 			expect(gameroom.isPlayerOnesTurn).to.equal(true);
+		});
+	});
+
+	describe("#buildGameStateResponse()", function() {
+		it("should retrieve the gamestate for both players in a gameroom", function() {
+			var player1 = new Player(1, "timmay");
+			var player2 = new Player(2, "yammit");
+			var gameroom = new Gameroom(null, null, player1, player2, null);
+
+			player1.board = [[false, false], [true, true]];
+			player1.hitAttempts = [[false, true], [false, false]];
+			player2.board = [[true, true], [false, false]];
+			player2.hitAttempts = [[true, false], [false, false]];
+			var wasHitSuccess = false;
+
+			var expected = new Tuple(
+				new ResponsePayload([[null, null], [false, false]], [[null, true], [null, null]], false),
+				new ResponsePayload([[false, true], [null, null]], [[false, null], [null, null]], false)
+			);
+
+			var actual = gameroom.buildGameStateResponse(player1, player2, false);
+			expect(actual).to.deep.equal(expected);
 		});
 	});
 });

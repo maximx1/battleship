@@ -35,15 +35,18 @@ gameroom.prototype.commitNewCommand = function(command) {
 	return result;
 };
 
-gameroom.prototype.retrieveGameState = function() {
+gameroom.prototype.buildGameStateResponse = function(player1, player2, wasSuccessfulHit) {
 	var player1View = new ResponsePayload(
-		gameLogic.determinePlayersBoardView(this.player1.board, this.player2.hitAttempts),
-		gameLogic.determineHitView(this.player2.board, this.player1.hitAttempts)
+		GameLogic.determinePlayersBoardView(player1.board, player2.hitAttempts),
+		GameLogic.determineHitView(player2.board, player1.hitAttempts),
+		wasSuccessfulHit
 	);
-	var player2View = new responsePayload(
-		gameLogic.determinePlayersBoardView(this.player2.board, this.player1.hitAttempts),
-		gameLogic.determineHitView(this.player1.board, this.player2.hitAttempts)
+	var player2View = new ResponsePayload(
+		GameLogic.determinePlayersBoardView(this.player2.board, this.player1.hitAttempts),
+		GameLogic.determineHitView(this.player1.board, this.player2.hitAttempts),
+		wasSuccessfulHit
 	);
+	return new Tuple(player1View, player2View);
 };
 
 gameroom.prototype.determineAffectedPlayer = function(isTargetSelf) {
