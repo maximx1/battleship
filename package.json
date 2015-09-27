@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha ./test",
     "test-debug": "mocha ./test/ --debug-brk",
-    "build-js": "browserify src/browser/lib.js -d -p [minifyify --map public/bundle.map.json --output public/bundle.map.json] > public/bundle.js",
+    "build-js": "browserify src/browser/lib.js > public/bundle.js",
     "start": "npm run build-js && node index.js"
   },
   "repository": {

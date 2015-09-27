@@ -1,6 +1,7 @@
 var Gameroom = require("../../src/battleship/gameroom.js");
 var Player = require("../../src/battleship/models/player.js");
 var Command = require("../../src/battleship/models/command.js");
+var GamePiece = require("../../src/battleship/models/gamePiece.js");
 var Tuple = require("tuple-w");
 var ResponsePayload = require("../../src/battleship/models/responsePayload.js");
 
@@ -150,7 +151,8 @@ describe("Gameroom", function() {
 			expect(gameroom.isPlayerOnesTurn).to.equal(true);
 		});
 	});
-
+	
+	// TODO: Need to update this test to not override the player board object...
 	describe("#buildGameStateResponse()", function() {
 		it("should retrieve the gamestate for both players in a gameroom", function() {
 			var player1 = new Player(1, "timmay");
@@ -170,6 +172,12 @@ describe("Gameroom", function() {
 
 			var actual = gameroom.buildGameStateResponse(player1, player2, false);
 			expect(actual).to.deep.equal(expected);
+		});
+	});
+
+	describe("#pieceGen()", function() {
+		it("should return a GamePiece at the location passed in", function() {
+			expect(Gameroom.pieceGen(1, 2)).to.deep.equal(new GamePiece(new Tuple(1, 2), null));
 		});
 	});
 });

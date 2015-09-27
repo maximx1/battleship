@@ -38,7 +38,6 @@ input[type="text"] {
   width: 2em;
   height: 2em;
   margin: .4em;
-  background-color: #ffffff;
   float: left;
   border-radius: 3px;
   color: black;
@@ -46,6 +45,22 @@ input[type="text"] {
 
 .gamePiece:hover {
   box-shadow: 0 0 1em gold;
+}
+
+.gamePiece.red {
+  background-color: red;
+}
+
+.gamePiece.green {
+  background-color: green;
+}
+
+.gamePiece.black {
+  background-color: black;
+}
+
+.gamePiece.white {
+  background-color: white;
 }
 
 .boardView {

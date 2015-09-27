@@ -66,8 +66,8 @@ gameroom.prototype.bumpTurn = function() {
 
 gameroom.pieceGen = function(i, j) {
 	return function() {
-		return new GamePiece(new Tuple(i, j));
-	};
+		return new GamePiece(new Tuple(i, j), null);
+	}();
 };
 
 module.exports = gameroom;
