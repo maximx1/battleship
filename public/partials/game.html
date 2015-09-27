@@ -4,13 +4,13 @@
   <a href="https://google.com"><button>Start</button></a>
   <p>{{$root.username}}</p>
 -->
-  <div id="gameBoard">
+  <div id="gameBoard" class="gameBoardMasterView">
     <div id="selfView" class="boardView">
       <ul>
         <li ng-repeat="row in playerBoard">
           <ul>
             <li ng-repeat="piece in row track by $index">
-              <div class="gamePiece">&nbsp;</div>
+              <div class="gamePiece" ng-click="handlePieceClick(piece)">{{ piece.state ? "T" : "&nbsp;"}}</div>
             </li>
           </ul>
         </li>
@@ -21,7 +21,7 @@
         <li ng-repeat="row in opponentBoard">
           <ul>
             <li ng-repeat="piece in row track by $index">
-              <div class="gamePiece">&nbsp;</div>
+              <div class="gamePiece" ng-click="handlePieceClick(piece)">{{ piece.state ? "T" : "&nbsp;"}}</div>
             </li>
           </ul>
         </li>

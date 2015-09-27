@@ -1,6 +1,7 @@
 var Tuple = require("tuple-w");
 var angular = require("angular");
 var utils = require("../utils/utils.js");
+var GamePiece = require("../battleship/models/gamePiece.js");
 require("angular-ui-router");
 
 var Command = require("../battleship/models/command.js");
@@ -50,7 +51,10 @@ battleshipGame.controller('bsJoinControl', ["$scope", "$rootScope", function ($s
 
 battleshipGame.controller('bsGameController', ["$scope", "$rootScope", function ($scope, $rootScope) {
   //$rootScope.username = "player_game";
-  $scope.playerBoard = utils.init2DArray(10, false);
-  $scope.opponentBoard = utils.init2DArray(10, false);
-
+  var remap = function(x, i) { return x.map(function(y, j) { return new GamePiece(new Tuple(i, j), false);});};
+  $scope.playerBoard = utils.init2DArray(10, false).map(remap);
+  $scope.opponentBoard = utils.init2DArray(10, false).map(remap);
+  $scope.handlePieceClick = function(piece) {
+    piece.state=true;
+  };
 }]);
