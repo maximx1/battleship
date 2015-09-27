@@ -2,9 +2,15 @@ var crypto = require("crypto");
 
 var utils = {};
 
-utils.init2DArray = function(dimension, initValue) {
-	return Array.apply(null, Array(dimension)).map(function(x) {
-		return Array.apply(null, Array(dimension)).map(function(_) {return initValue;});
+utils.initGen = function(value) {
+	return function() {
+		return value;
+	};
+};
+
+utils.init2DArray = function(dimension, initValueGenerator) {
+	return Array.apply(null, Array(dimension)).map(function(x, i) {
+		return Array.apply(null, Array(dimension)).map(function(_, j) {return initValueGenerator(i, j);});
 	});
 };
 

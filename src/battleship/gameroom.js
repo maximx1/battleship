@@ -3,6 +3,8 @@ var Tuple = require("tuple-w");
 var GameLogic = require("./gameLogic.js");
 var ResponsePayload = require("./models/responsePayload.js");
 var utils = require("../utils/utils.js");
+var initGen = utils.initGen;
+var GamePiece = require("../battleship/models/gamePiece.js");
 
 var gameroom = function(initTimestamp, endTimestamp, player1, player2, passphrase) {
 	this.id = uuid.v4();
@@ -60,6 +62,12 @@ gameroom.prototype.determineAffectedPlayer = function(isTargetSelf) {
 
 gameroom.prototype.bumpTurn = function() {
 	this.isPlayerOnesTurn = !this.isPlayerOnesTurn;
+};
+
+gameroom.pieceGen = function(i, j) {
+	return function() {
+		return new GamePiece(new Tuple(i, j));
+	};
 };
 
 module.exports = gameroom;

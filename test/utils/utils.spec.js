@@ -1,5 +1,6 @@
 var utils = require("../../src/utils/utils.js");
 var Tuple = require("tuple-w");
+var initGen = utils.initGen;
 
 describe("utils", function() {
 	describe("#range()", function() {
@@ -12,27 +13,45 @@ describe("utils", function() {
 
 	describe("#init2DArray()", function() {
 		it("should initialize a 2D array with the init value with square size with dimensions passed in", function() {
-			var array1 = utils.init2DArray(2, true);
-			var array2 = utils.init2DArray(4, false);
-			var array3 = utils.init2DArray(3, "snicklefritz");
-			var array4 = utils.init2DArray(1, 101);
+			var array1 = utils.init2DArray(2, initGen(true));
+			var array2 = utils.init2DArray(4, initGen(false));
+			var array3 = utils.init2DArray(3, initGen("snicklefritz"));
+			var array4 = utils.init2DArray(1, initGen(101));
 
 			expect(array1).to.deep.equal([[true, true], [true, true]]);
 			expect(array2).to.deep.equal([[false, false, false, false], [false, false, false, false], [false, false, false, false], [false, false, false, false]]);
 			expect(array3).to.deep.equal([["snicklefritz", "snicklefritz", "snicklefritz"], ["snicklefritz", "snicklefritz", "snicklefritz"], ["snicklefritz", "snicklefritz", "snicklefritz"]]);
 			expect(array4).to.deep.equal([[101]]);
 		});
+
+		it("should pass in the coordinates of the element into the generator function", function() {
+			var genFunc = function(i, j) {
+				return function() {
+					return new Tuple(i, j);
+				}();
+			};
+
+			var array = utils.init2DArray(10, genFunc);
+			array.forEach(function(x, i) {
+				x.forEach(function(y, j) {
+					y.unpack(function(coordX, coordY) {
+						expect(coordX).to.equal(i);
+						expect(coordY).to.equal(j);
+					});
+				});
+			});
+		});
 	});
 
 	describe("#getArrayElementByCoord()", function() {
 		it("should return the element of the array found at the passed in coordinates", function() {
-			var arr = utils.init2DArray(10, false);
+			var arr = utils.init2DArray(10, initGen(false));
 			arr[1][4] = true;
 			expect(utils.getArrayElementByCoord(arr, new Tuple(1, 4))).to.equal(true);
 		});
 
 		it("should return null should the coordinates be out of bounds", function() {
-			expect(utils.getArrayElementByCoord(utils.init2DArray(10, false), new Tuple(-1, -1))).to.equal(null);
+			expect(utils.getArrayElementByCoord(utils.init2DArray(10, initGen(true)), new Tuple(-1, -1))).to.equal(null);
 		});
 
 		it("should return null should the passed in array be null", function() {
@@ -40,7 +59,7 @@ describe("utils", function() {
 		});
 
 		it("should return null should the coordinates be null", function() {
-			expect(utils.getArrayElementByCoord(utils.init2DArray(10, false), null)).to.equal(null);
+			expect(utils.getArrayElementByCoord(utils.init2DArray(10, initGen(false)), null)).to.equal(null);
 		});
 	});
 
