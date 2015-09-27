@@ -1,0 +1,54 @@
+body {
+  background-color: #2b2b30;
+  color: #d4d4d4;
+}
+
+input[type="text"] {
+  background-color: #2b2b30;
+  color: #d4d4d4;
+}
+
+.underlineInput {
+  height:17px;
+  border: 0;
+  width: 10em;
+  margin-left:1px;
+  box-shadow: -8px 10px 0 -7px #2b2b30, 8px 10px 0 -7px #2b2b30;
+  transition: box-shadow 0.3s;
+  -o-transition: box-shadow 0.3s;
+  -moz-transition: box-shadow 0.3s;
+  -webkit-transition: box-shadow 0.3s;
+}
+
+.underlineInput:focus {
+  outline: none;
+  box-shadow: -8px 10px 0 -7px #32d62a, 8px 10px 0 -7px #32d62a;
+}
+
+#gameBoard {
+  color: #d4d4d4;
+}
+
+#gameBoard ul {
+  list-style-type: none;
+}
+
+.gamePiece {
+  border: 2px black;
+  width: 2em;
+  height: 2em;
+  margin: .4em;
+  background-color: #ffffff;
+  float: left;
+}
+
+.gamePiece:hover {
+  box-shadow: 0 0 1em gold;
+}
+
+.boardView {
+  float: left;
+  width: 35em;
+  margin: 1em;
+  padding: 1em;
+}

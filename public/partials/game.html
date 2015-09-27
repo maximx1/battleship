@@ -1,0 +1,31 @@
+<div>
+  <h1>Battleship - Game board</h1>
+  <!--<input type="text" name="passphrase" placeholder="Create a Passphrase">
+  <a href="https://google.com"><button>Start</button></a>
+  <p>{{$root.username}}</p>
+-->
+  <div id="gameBoard">
+    <div id="selfView" class="boardView">
+      <ul>
+        <li ng-repeat="row in playerBoard">
+          <ul>
+            <li ng-repeat="piece in row track by $index">
+              <div class="gamePiece">&nbsp;</div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="opponentView" class="boardView">
+      <ul>
+        <li ng-repeat="row in opponentBoard">
+          <ul>
+            <li ng-repeat="piece in row track by $index">
+              <div class="gamePiece">&nbsp;</div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

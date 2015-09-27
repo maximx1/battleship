@@ -24,17 +24,33 @@ battleshipGame.config(["$stateProvider", "$urlRouterProvider", function($statePr
       url: "/join",
       templateUrl: "partials/join_game.html",
       controller: "bsJoinControl"
+    })
+    .state('game', {
+      url: "/game",
+      templateUrl: "partials/game.html",
+      controller: "bsGameController"
     });
 }]);
 
 battleshipGame.controller('headerController', ["$scope", "$rootScope", function ($scope, $rootScope) {
   $rootScope.username = "player_" + utils.generateRandomString(5);
+  $scope.$watch('username', function(username) {
+    $rootScope.username = username;
+  });
 }]);
 
 battleshipGame.controller('bsInitiateControl', ["$scope", "$rootScope", function ($scope, $rootScope) {
-  $rootScope.username = "player_init";
+  //$rootScope.username = "player_init";
+  $scope.message = $rootScope.username;
 }]);
 
 battleshipGame.controller('bsJoinControl', ["$scope", "$rootScope", function ($scope, $rootScope) {
-  $rootScope.username = "player_join";
+  //$rootScope.username = "player_join";
+}]);
+
+battleshipGame.controller('bsGameController', ["$scope", "$rootScope", function ($scope, $rootScope) {
+  //$rootScope.username = "player_game";
+  $scope.playerBoard = utils.init2DArray(10, false);
+  $scope.opponentBoard = utils.init2DArray(10, false);
+
 }]);
