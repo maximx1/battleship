@@ -151,7 +151,7 @@ describe("Gameroom", function() {
 			expect(gameroom.isPlayerOnesTurn).to.equal(true);
 		});
 	});
-	
+
 	// TODO: Need to update this test to not override the player board object...
 	describe("#buildGameStateResponse()", function() {
 		it("should retrieve the gamestate for both players in a gameroom", function() {
@@ -159,15 +159,19 @@ describe("Gameroom", function() {
 			var player2 = new Player(2, "yammit");
 			var gameroom = new Gameroom(null, null, player1, player2, null);
 
-			player1.board = [[false, false], [true, true]];
-			player1.hitAttempts = [[false, true], [false, false]];
-			player2.board = [[true, true], [false, false]];
-			player2.hitAttempts = [[true, false], [false, false]];
+			var bgp = function(x, y, value) {
+				return new GamePiece(new Tuple(x, y), value);
+			};
+
+			player1.board = [[bgp(0, 0, false), bgp(0, 1, false)], [bgp(1, 0, true), bgp(1, 1, true)]];
+			player1.hitAttempts = [[bgp(0, 0, false), bgp(0, 1, true)], [bgp(1, 0, false), bgp(1, 1, false)]];
+			player2.board = [[bgp(0, 0, true), bgp(0, 1, true)], [bgp(1, 0, false), bgp(1, 1, false)]];
+			player2.hitAttempts = [[bgp(0, 0, true), bgp(0, 1, false)], [bgp(1, 0, false), bgp(1, 1, false)]];
 			var wasHitSuccess = false;
 
 			var expected = new Tuple(
-				new ResponsePayload([[null, null], [false, false]], [[null, true], [null, null]], false),
-				new ResponsePayload([[false, true], [null, null]], [[false, null], [null, null]], false)
+				new ResponsePayload([[bgp(0, 0, null), bgp(0, 1, null)], [bgp(1, 0, false), bgp(1, 1, false)]], [[bgp(0, 0, null), bgp(0, 1, true)], [bgp(1, 0, null), bgp(1, 1, null)]], false),
+				new ResponsePayload([[bgp(0, 0, false), bgp(0, 1, true)], [bgp(1, 0, null), bgp(1, 1, null)]], [[bgp(0, 0, false), bgp(0, 1, null)], [bgp(1, 0, null), bgp(1, 1, null)]], false)
 			);
 
 			var actual = gameroom.buildGameStateResponse(player1, player2, false);

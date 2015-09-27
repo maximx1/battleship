@@ -1,14 +1,17 @@
+var GamePiece = require("./models/gamePiece.js");
+var Tuple = require("tuple-w");
+
 var gameLogic = {};
 
 gameLogic.determinePlayersBoardView = function(playersBoard, opponentAttempts) {
   this.validateArrays(playersBoard, opponentAttempts);
 	return playersBoard.map(function(x, i) {
 		return x.map(function(y, j) {
-			if(opponentAttempts[i][j]) {
-				return y ? true : null;
+			if(opponentAttempts[i][j].state) {
+				return new GamePiece(new Tuple(i, j), y.state ? true : null);
 			}
 			else {
-				return y ? false : null;
+				return new GamePiece(new Tuple(i, j), y.state ? false : null);
 			}
 		});
 	});
@@ -18,11 +21,11 @@ gameLogic.determineHitView = function(opponentsBoard, playersAttempts) {
   this.validateArrays(opponentsBoard, playersAttempts);
 	return opponentsBoard.map(function(x, i) {
 		return x.map(function(y, j) {
-			if(playersAttempts[i][j]) {
-				return y ? true : false;
+			if(playersAttempts[i][j].state) {
+				return new GamePiece(new Tuple(i, j), y.state ? true : false);
 			}
 			else {
-				return null;
+				return new GamePiece(new Tuple(i, j), null);
 			}
 		});
 	});
