@@ -18,6 +18,9 @@
     "node"
   ],
   "author": "Brian Vanderbusch <brian@normalgravity.com> (https://github.com/LongLiveCHIEF)",
+  "contributors": [
+    "Justin Walrath <walrathjaw@gmail.com> (https://github.com/maximx1)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HackerHappyHour/battleship/issues"

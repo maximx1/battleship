@@ -1,0 +1,2 @@
+  htop @0.8.2.2_0 (active) platform='darwin 14' archs='x86_64'
+  ncurses @5.9_2 (active) platform='darwin 14' archs='x86_64'

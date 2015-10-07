@@ -1,14 +1,16 @@
 <!doctype html>
 <html ng-app="battleshipGame">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#00a150" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Battleship</title>
     <script src="bundle.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" type="text/css" media="screen, handheld" />
   </head>
   <body>
     <div ng-controller="headerController">
-      <p><input class="underlineInput" type="text" ng-model="username" value="{{$root.username}}"></p>
+      <p><input class="underlineInput" type="text" ng-model="username" value="{{$root.username}}" /></p>
     </div>
     <div id="main">
       <a ui-sref="landing">Home</a>
