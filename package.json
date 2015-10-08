@@ -7,7 +7,9 @@
     "test": "mocha ./test",
     "test-debug": "mocha ./test/ --debug-brk",
     "build-js": "browserify src/browser/lib.js -d -p [minifyify --map public/bundle.map.json --output public/bundle.map.json] > public/bundle.js",
-    "start": "npm run build-js && node index.js"
+    "build-js-local": "browserify src/browser/lib.js > public/bundle.js",
+    "start": "npm run build-js && node index.js",
+    "localstart": "npm run build-js-local && node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,9 @@
     "node"
   ],
   "author": "Brian Vanderbusch <brian@normalgravity.com> (https://github.com/LongLiveCHIEF)",
+  "contributors": [
+    "Justin Walrath <walrathjaw@gmail.com> (https://github.com/maximx1)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/HackerHappyHour/battleship/issues"

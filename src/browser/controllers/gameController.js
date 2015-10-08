@@ -4,12 +4,19 @@ var pieceGen = require("../../battleship/gameroom.js").pieceGen;
 //var Command = require("../battleship/models/command.js");
 //var GamePiece = require("../battleship/models/gamePiece.js");
 
-var gc = {};
+var gc = {
+  playerMessages: [
+    "Your turn",
+    "Oppenents turn",
+    "Waiting on player to connect"
+  ]
+};
 
 gc.handler = function (scope, rootScope) {
   scope.playerBoard = utils.init2DArray(10, pieceGen);
   scope.opponentBoard = utils.init2DArray(10, pieceGen);
   scope.handlePieceClick = gc.handlePieceClick;
+  scope.gameplayMessage = gc.playerMessages[2];
 };
 
 gc.handlePieceClick = function(piece) {

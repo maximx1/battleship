@@ -3,17 +3,31 @@ body {
   color: #d4d4d4;
 }
 
-input[type="text"] {
-  background-color: #2b2b30;
+.center {
+  text-align: center;
+}
+
+.center, .gameBoardMasterView {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userBox {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.nav, .underlineInput[type="text"] {
+  background-color: black;
   color: #d4d4d4;
 }
 
 .underlineInput {
+  text-align: right;
   height:17px;
   border: 0;
   width: 10em;
-  margin-left:1px;
-  box-shadow: -8px 10px 0 -7px #2b2b30, 8px 10px 0 -7px #2b2b30;
   transition: box-shadow 0.3s;
   -o-transition: box-shadow 0.3s;
   -moz-transition: box-shadow 0.3s;
@@ -25,21 +39,33 @@ input[type="text"] {
   box-shadow: -8px 10px 0 -7px #32d62a, 8px 10px 0 -7px #32d62a;
 }
 
+.nav {
+  padding: .5em;
+  margin: -1em;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .gameBoardMasterView {
   color: #d4d4d4;
+  width: 80%;
 }
 
 .gameBoardMasterView ul {
   list-style-type: none;
+  padding-left: 0;
 }
 
 .gamePiece {
   border: 2px black;
-  width: 2em;
-  height: 2em;
-  margin: .4em;
+  width: 9%;
+  padding-bottom: 9%;
+  margin: .5%;
   float: left;
-  border-radius: 3px;
+  border-radius: .1%;
   color: black;
 }
 
@@ -65,8 +91,20 @@ input[type="text"] {
 
 .boardView {
   float: left;
-  width: 35em;
-  margin: 1em;
-  padding: 1em;
-  border: 1em white;
+  border-radius: 1%;
+  padding: .5%
+}
+
+@media screen and (max-width: 40.5em) {
+  .boardView {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 40.5em) {
+  .boardView {
+    width: 49%;
+  }
 }
