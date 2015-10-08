@@ -9,11 +9,17 @@
     <link rel="stylesheet" href="index.css" type="text/css" media="screen, handheld" />
   </head>
   <body>
-    <div ng-controller="headerController">
-      <p><input class="underlineInput" type="text" ng-model="username" value="{{$root.username}}" /></p>
+    <div class="nav" ng-controller="headerController">
+      <ul>
+        <li>
+          <a ui-sref="landing">Home</a>
+        </li>
+        <li
+          <span><input class="underlineInput" type="text" ng-model="username" value="{{$root.username}}" /><span>
+        </li>
+      </ul>
     </div>
     <div id="main">
-      <a ui-sref="landing">Home</a>
       <div ui-view></div>
     </div>
   </body>
