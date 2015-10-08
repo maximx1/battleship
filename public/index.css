@@ -9,6 +9,9 @@ input[type="text"] {
 }
 
 .underlineInput {
+  float: right;
+  position: sticky;
+  text-align: right;
   height:17px;
   border: 0;
   width: 10em;
@@ -23,6 +26,11 @@ input[type="text"] {
 .underlineInput:focus {
   outline: none;
   box-shadow: -8px 10px 0 -7px #32d62a, 8px 10px 0 -7px #32d62a;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding-left: 0;
 }
 
 .gameBoardMasterView {

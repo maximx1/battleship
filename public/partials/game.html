@@ -1,16 +1,12 @@
 <div>
   <h1>Battleship - Game board</h1>
-  <!--<input type="text" name="passphrase" placeholder="Create a Passphrase">
-  <a href="https://google.com"><button>Start</button></a>
-  <p>{{$root.username}}</p>
--->
   <div id="gameBoard" class="gameBoardMasterView">
     <div id="selfView" class="boardView">
       <ul>
         <li ng-repeat="row in playerBoard">
           <ul>
             <li ng-repeat="piece in row track by $index">
-              <div class="gamePiece" ng-class="piece.state === null ? 'white' : piece.state ? 'red' : 'black'" ng-click="handlePieceClick(piece)"><!--{{ piece.state ? "T" : "&nbsp;"}}--></div>
+              <div class="gamePiece" ng-class="piece.state === null ? 'white' : piece.state ? 'red' : 'black'" ng-click="handlePieceClick(piece)"></div>
             </li>
           </ul>
         </li>
@@ -21,7 +17,7 @@
         <li ng-repeat="row in opponentBoard">
           <ul>
             <li ng-repeat="piece in row track by $index">
-              <div class="gamePiece" ng-class="piece.state === null ? 'white' : piece.state ? 'green' : 'red'" ng-click="handlePieceClick(piece)"><!--{{ piece.state ? "T" : "&nbsp;"}}--></div>
+              <div class="gamePiece" ng-class="piece.state === null ? 'white' : piece.state ? 'green' : 'red'" ng-click="handlePieceClick(piece)"></div>
             </li>
           </ul>
         </li>
