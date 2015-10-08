@@ -1,5 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/maximx1/battleship.png?label=ready&title=Ready)](https://waffle.io/maximx1/battleship)
 [![Build Status](https://travis-ci.org/maximx1/battleship.svg?branch=develop)](https://travis-ci.org/maximx1/battleship)
+[![Stories in Ready](https://badge.waffle.io/maximx1/battleship.png?label=ready&title=Ready)](https://waffle.io/maximx1/battleship)
 Battleshits
 ===========
 
