@@ -6,7 +6,7 @@ MAINTAINER    Justin Walrath <walrathjaw@gmail.com>
 
 # Update Box and obtain dependencies
 RUN           curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN           apt-get update && apt-get install -y nodejs git
+RUN           apt-get update && apt-get install -y nodejs git npm
 
 # Setup node
 RUN           ln -s /usr/bin/nodejs /usr/bin/node
@@ -19,7 +19,7 @@ ENV           INSTALL_VERSION   master
 ENV           REPOSITORY        https://github.com/maximx1/battleship
 
 # Install the application
-RUN           git clone --branch $INSTALL_VERSION $REPOSITORY $APP_INSTALL_DIR/
+RUN           git clone --branch $INSTALL_VERSION $REPOSITORY $APP_INSTALL_DIR
 WORKDIR       $APP_INSTALL_DIR
 RUN           npm install && npm run build-js
 
