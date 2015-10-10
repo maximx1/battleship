@@ -5,11 +5,9 @@ FROM          ubuntu
 MAINTAINER    Justin Walrath <walrathjaw@gmail.com>
 
 # Update Box and obtain dependencies
+RUN           apt-get update && apt-get install -y git curl python make g++
 RUN           curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN           apt-get update && apt-get install -y nodejs git npm
-
-# Setup node
-RUN           ln -s /usr/bin/nodejs /usr/bin/node
+RUN           apt-get install -y nodejs
 
 # Set up environment variables
 ENV           PORT              3000
