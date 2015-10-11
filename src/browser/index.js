@@ -5,7 +5,6 @@ var joinController = require("./controllers/joinController.js");
 var gameController = require("./controllers/gameController.js");
 require("angular-ui-router");
 
-
 var battleshipGame = angular.module('battleshipGame', ['ui.router']);
 
 battleshipGame.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
